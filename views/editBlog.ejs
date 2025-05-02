@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Edit Blog</title>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+
+    <div class="container mt-3">
+      <h2>Edit Blog</h2>
+
+      <form
+        action="/blog/edit/<%= blog._id %>"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="coverImage" class="form-label">Cover Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="coverImage"
+            name="coverImage"
+            aria-describedby="coverImage"
+            accept="image/*"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            value="<%= blog.title %>"
+            <!--
+            Pre-fill
+            the
+            title
+            --
+          />
+          aria-describedby="title" required />
+        </div>
+        <div class="mb-3">
+          <label for="body">Body</label>
+          <textarea name="body" class="form-control" id="body" required>
+<%= blog.body %></textarea
+          >
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+
+    <%- include('./partials/scripts') %>
+  </body>
+</html>
